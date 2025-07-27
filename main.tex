@@ -1,0 +1,127 @@
+\documentclass[12pt]{report}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % Or another pdflatex-compatible font package
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{amsthm} % Enables theorems, lemmas, etc.
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{yfonts}
+\usepackage{physics}
+\geometry{margin=1in}
+\usepackage[backend=biber,style=numeric,defernumbers=true]{biblatex}
+\addbibresource{chapter1_citationsfull.bib}
+\mdfdefinestyle{collapsebox}{
+  linecolor=black,
+  outerlinewidth=1pt,
+  roundcorner=8pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  backgroundcolor=black!3,
+  nobreak=true
+}
+
+\newtheorem{theorem}{Theorem}[section] % Theorem numbering per section
+
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=true,
+  frame=single,
+  columns=flexible,
+  keepspaces=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=5pt,
+  tabsize=4,
+  showstringspaces=false,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray!70!black}\itshape,
+  stringstyle=\color{orange},
+  backgroundcolor=\color{black!1},
+  rulecolor=\color{black!40},
+}
+
+
+\setlength{\headheight}{15pt} % or higher if needed
+\addtolength{\topmargin}{-3pt} % to balance page layout
+\geometry{margin=1in}
+
+\title{Measurement: A Reconciliation}
+\author{Ryan Luke Russell}
+\date{\today}
+\usepackage{eso-pic}
+
+
+\newcommand\BackgroundPic{%
+  \AddToShipoutPictureBG*{%
+    \ifnum\value{page}>1
+      \begin{tikzpicture}[remember picture,overlay]
+        \node[opacity=0.2, at=(current page.center)] {
+          \includegraphics[width=0.8\paperwidth]{images/morningstar.png}
+        };
+      \end{tikzpicture}
+    \fi
+  } 
+}
+
+
+
+\begin{document}
+% Fancy header/footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftmark}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+\begin{titlepage}
+    \centering
+    \vspace*{2.5cm}
+    {\Huge\bfseries Measurement: A Reconciliation \\[0.5em]}
+    {\LARGE Ryan Luke Russell}\\[0.5cm]
+    {\large \today}\\[3cm]
+    \includegraphics[width=0.4\textwidth]{images/morningstar.png}\\[1cm]
+    {\Large\itshape \textquotedblleft Photizein tous agnoountas\textquotedblright}\\
+    {\large - PHOTIZARE IGNORANTES}
+    \vfill
+\end{titlepage}
+
+\begin{abstract}
+The divide between quantum indeterminacy and classical structure remains one of the most persistent foundational problems in physics. This work proposes a novel field-theoretic framework in which measurement is reinterpreted not as an external trigger but as a fundamental physical field, one that propagates, accumulates, and induces definitional collapse. Building on a mathematical foundation involving imaginary matrices and Euler's identity as a collapse operator, we model the emergence of classical reality as a gradient-driven field transition. This Measurement Field Theory (MFT) treats observation as a dynamical interaction with quantifiable consequences, allowing collapse to be expressed in terms of spatial curvature, thermodynamic entropy, and non-local field behavior. We derive evolution equations, propose experimental predictions, and demonstrate how measurement fields may unify the mechanisms underlying decoherence, virtual particle emergence, phase transitions, and even dark matter phenomena. This framework aims to bridge the quantum-classical interface by treating definition itself as a propagating force, not metaphorically, but as a measurable and testable entity in field-theoretic terms.
+\end{abstract}
+  
+\tableofcontents
+
+\input{sections/imaginary_matrices_collapse_formal.tex}
+
+\nocite{*}
+
+
+\printbibliography
+
+\vspace{2cm}
+\begin{center}
+    \textcopyright{}
+    2025 Ryan Luke Russell. Licensed under CC BY 4.0.
+\end{center}
+
+
+\end{document}
