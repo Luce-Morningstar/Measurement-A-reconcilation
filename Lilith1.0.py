@@ -412,7 +412,7 @@ class LilithSimulation:
                 plt.figure(figsize=(12, 6))
                 try:
                     hp.mollview(np.log1p(np.abs(projection)), 
-                               title=f"Lilith Field Collapse - Step {self.step}", 
+                               title=f"Lilith Field - Step {self.step}", 
                                cmap="inferno", cbar=True, hold=True)
                     plot_filename = os.path.join(self.output_dir, f"mollweide_{self.step:06d}.png")
                     plt.savefig(plot_filename, dpi=150, bbox_inches='tight')
@@ -484,8 +484,8 @@ class LilithSimulation:
                             transform=plt.gca().transAxes, fontsize=12,
                             bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
                             
-            plt.xlabel('Multipole moment ℓ', fontsize=14)
-            plt.ylabel('Cℓ [μK²]', fontsize=14)
+            plt.xlabel('Multipole moment $\ell$', fontsize=14)
+            plt.ylabel('C_\u2113 [\u03BCK\u00b2]', fontsize=14)
             plt.title(f'Angular Power Spectrum Comparison - Step {self.step}', fontsize=16)
             plt.grid(True, alpha=0.3)
             plt.legend(fontsize=12)
@@ -725,6 +725,11 @@ class LilithGUI:
             'observer_mobility_decay': {'value': 0.50, 'min': 0.1, 'max': 0.95, 'step': 0.01, 'randomize': True, 'rand_min': 0.3, 'rand_max': 0.8},
             'shell_scale_factor': {'value': 0.5, 'min': 0.1, 'max': 0.9, 'step': 0.1, 'randomize': False, 'rand_min': 0.3, 'rand_max': 0.7},
             'step_size': {'value': 0.5, 'min': 0.1, 'max': 2.0, 'step': 0.1, 'randomize': True, 'rand_min': 0.3, 'rand_max': 1.0}
+
+            'domain_decomposition': {'value': 1.0, 'min': 0.0, 'max': 1.0, 'step': 1.0, 'randomize': False, 'rand_min': 0.0, 'rand_max': 1.0},  
+            'cooling_phase_2_decay': {'value': 1.5, 'min': 1.0, 'max': 3.0, 'step': 0.1, 'randomize': True, 'rand_min': 1.2, 'rand_max': 2.0},
+            'cooling_phase_3_decay': {'value': 2.0, 'min': 1.5, 'max': 5.0, 'step': 0.1, 'randomize': True, 'rand_min': 1.8, 'rand_max': 3.0},
+            'max_observers_per_domain': {'value': 1000, 'min': 100, 'max': 5000, 'step': 100, 'randomize': False, 'rand_min': 500, 'rand_max': 2000}
         }
         
     def create_widgets(self):
@@ -1391,7 +1396,7 @@ class LilithGUI:
                 ax.loglog(ell[1:len(planck_truncated)], planck_truncated[1:], 
                          label='Planck', linestyle='--', color='blue')
                          
-            ax.set_xlabel('Multipole moment ℓ')
+            ax.set_xlabel('Multipole moment $\ell$')
             ax.set_ylabel('Cℓ')
             ax.set_title('Angular Power Spectrum')
             ax.grid(True)
